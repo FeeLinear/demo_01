@@ -54,8 +54,18 @@
 <audio src="shotfire.mp3" preload="auto"></audio>
 <audio src="shotfire.mp3" preload="auto"></audio>
 <audio src="shotfire.mp3" preload="auto"></audio>
-  <audio src="zz.mp3" preload="auto" autoplay="autoplay"></audio>
+  <audio src="zz.mp3" preload="auto" autoplay="autoplay" id="music_dom" loop="loop"></audio>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('music_dom');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
   var canvas = document.getElementById("cas");
   var ocas = document.createElement("canvas");
   var octx = ocas.getContext("2d");
